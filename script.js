@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 1. NAVIGATION FUNCTIONALITY
   // ========================================================================
   const navigationManager = (function () {
-    // Biến trong phạm vi navigation
+    // Page navigation variables
     const pages = document.querySelectorAll(".page");
     const dots = document.querySelectorAll(".dot");
     let currentPageIndex = 0;
@@ -567,7 +567,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let touchEndX = 0;
     const minSwipeDistance = 50;
 
-    // Hàm thiết lập trang active
     function setActivePage(index) {
       // Loop back to first or last page if index is out of bounds
       if (index < 0) index = pages.length - 1;
@@ -584,7 +583,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentPageIndex = index;
     }
 
-    // Xử lý các sự kiện swipe
     function handleSwipe() {
       const distance = touchEndX - touchStartX;
 
@@ -599,7 +597,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Khởi tạo điều hướng
     function init() {
       // Swipe hints
       document.querySelectorAll(".swipe-hint").forEach((hint) => {
