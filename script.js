@@ -160,11 +160,11 @@ document.addEventListener("DOMContentLoaded", function () {
       weddingDate = new Date(year, month, day, 10, 30, 0).getTime();
     } else {
       // Fallback if the date format is unexpected
-      weddingDate = new Date("May 25, 2025 10:30:00").getTime();
+      weddingDate = new Date("July 13, 2025 10:30:00").getTime();
     }
   } else {
     // Fallback if the element is not found
-    weddingDate = new Date("May 25, 2025 10:30:00").getTime();
+    weddingDate = new Date("July 13, 2025 10:30:00").getTime();
   }
 
   let countdownInterval;
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isMusicPlaying = !isMusicPlaying;
   });
 
-  // RSVP Form Submission
+  // RSVP Form handling
   const rsvpForm = document.getElementById("rsvp-form");
 
   if (rsvpForm) {
@@ -274,20 +274,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Get form data
       const formData = {
-        fullname: document.getElementById("fullname").value,
-        phone: document.getElementById("phone").value,
-        attendance: document.getElementById("attendance").value,
-        guests: document.getElementById("guests").value,
+        attendance: document.querySelector('input[name="attendance"]:checked')
+          ?.value,
+        guestName: document.getElementById("guest-name").value,
+        guestOf: document.querySelector('input[name="guest-of"]:checked')
+          ?.value,
+        guestCount: document.getElementById("guest-count").value,
+        wishes: document.getElementById("wishes").value,
       };
 
-      // In a real application, you would send this data to a server
+      // Validate form
+      if (!formData.attendance) {
+        alert("Vui lòng chọn bạn có tham dự không.");
+        return;
+      }
+
+      if (!formData.guestName) {
+        alert("Vui lòng nhập tên của bạn.");
+        return;
+      }
+
+      if (!formData.guestOf) {
+        alert("Vui lòng chọn bạn là khách của ai.");
+        return;
+      }
+
+      if (!formData.guestCount || formData.guestCount < 1) {
+        alert("Vui lòng nhập số khách hợp lệ.");
+        return;
+      }
+
+      // Here you would typically send the data to a server
+      // For now, we'll just log it and show a thank you message
       console.log("RSVP Form Data:", formData);
 
-      // Show confirmation
-      alert("Cảm ơn bạn đã xác nhận tham dự!");
+      // Show thank you message
+      const formContainer = rsvpForm.parentElement;
+      formContainer.innerHTML = `
+                <div class="thank-you-message">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h3>Cảm ơn bạn đã xác nhận!</h3>
+                    <p>Chúng mình đã nhận được thông tin của bạn và rất mong được gặp bạn trong ngày trọng đại.</p>
+                    ${
+                      formData.attendance === "yes"
+                        ? "<p>Hẹn gặp bạn vào ngày cưới!</p>"
+                        : "<p>Rất tiếc khi bạn không thể tham dự. Cảm ơn bạn đã thông báo cho chúng mình.</p>"
+                    }
+                </div>
+            `;
+    });
+  }
 
-      // Reset form
-      rsvpForm.reset();
+  // Number input constraints
+  const guestCountInput = document.getElementById("guest-count");
+  if (guestCountInput) {
+    guestCountInput.addEventListener("input", function () {
+      if (this.value < 1) {
+        this.value = 1;
+      }
     });
   }
 
@@ -370,6 +414,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   };
 
+  animateSwipeHints();
+
   // Add stars twinkling animation
   function createStars() {
     const starsContainer = document.querySelector(".stars");
@@ -404,5 +450,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   createStars();
-  animateSwipeHints();
 });
