@@ -367,168 +367,184 @@ document.addEventListener("DOMContentLoaded", function () {
 
   createStars();
 
-  // Gallery slideshow with autoplay functionality
-  let currentSlide = 1;
-  let direction = "right";
-  let autoplayTimer = null;
-  const AUTOPLAY_DELAY = 5000;
-  // Slideshow Gallery
-  if (document.querySelector("#gallery.active")) {
-    initSlideshow();
-  }
+  // Gallery slideshow functionality
+  const gallerySlideshow = (function () {
+    // Private variables scoped to the slideshow
+    let currentSlide = 1;
+    let direction = "right";
+    let autoplayTimer = null;
+    const AUTOPLAY_DELAY = 5000;
 
-  // Watch for page changes
-  const observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-      if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "class"
-      ) {
-        const gallery = document.querySelector("#gallery");
-
-        if (gallery && gallery.classList.contains("active")) {
-          initSlideshow();
-          startAutoplay();
-        } else if (gallery && !gallery.classList.contains("active")) {
-          stopAutoplay();
-        }
-      }
-    });
-  });
-
-  // Observe all sections for class changes
-  document.querySelectorAll("section").forEach((section) => {
-    observer.observe(section, { attributes: true });
-  });
-
-  // Handle visibility change to pause/resume autoplay
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      stopAutoplay();
-    } else if (!document.hidden && document.querySelector("#gallery.active")) {
+    // Initialize slideshow
+    function initSlideshow() {
+      showSlide(currentSlide);
+      setupControls();
       startAutoplay();
     }
-  });
 
-  // Initialize slideshow
-  function initSlideshow() {
-    showSlide(currentSlide);
-    setupControls();
-    startAutoplay();
-  }
+    // Setup control events
+    function setupControls() {
+      // Setup slidehow container interactions
+      const container = document.querySelector(".slideshow-container");
+      if (container) {
+        // Pause on hover
+        container.addEventListener("mouseenter", stopAutoplay);
+        container.addEventListener("mouseleave", startAutoplay);
 
-  // Setup control events
-  function setupControls() {
-    // Setup slidehow container interactions
-    const container = document.querySelector(".slideshow-container");
-    if (container) {
-      // Pause on hover
-      container.addEventListener("mouseenter", stopAutoplay);
-      container.addEventListener("mouseleave", startAutoplay);
+        // Setup touch swipe
+        let touchStart = 0;
+        container.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStart = e.changedTouches[0].screenX;
+            stopAutoplay();
+            e.stopPropagation();
+          },
+          { passive: false }
+        );
 
-      // Setup touch swipe
-      let touchStart = 0;
-      container.addEventListener(
-        "touchstart",
-        (e) => {
-          touchStart = e.changedTouches[0].screenX;
-          stopAutoplay();
-          e.stopPropagation();
-        },
-        { passive: false }
-      );
+        container.addEventListener(
+          "touchend",
+          (e) => {
+            const touchEnd = e.changedTouches[0].screenX;
+            const swipeDistance = Math.abs(touchEnd - touchStart);
 
-      container.addEventListener(
-        "touchend",
-        (e) => {
-          const touchEnd = e.changedTouches[0].screenX;
-          const swipeDistance = Math.abs(touchEnd - touchStart);
-
-          if (swipeDistance > 30) {
-            if (touchEnd < touchStart) {
-              navigateSlide(1);
-            } else {
-              navigateSlide(-1);
+            if (swipeDistance > 30) {
+              if (touchEnd < touchStart) {
+                navigateSlide(1);
+              } else {
+                navigateSlide(-1);
+              }
             }
-          }
 
-          startAutoplay();
-          e.stopPropagation();
-        },
-        { passive: false }
-      );
+            startAutoplay();
+            e.stopPropagation();
+          },
+          { passive: false }
+        );
 
-      container.addEventListener(
-        "touchmove",
-        (e) => {
-          e.stopPropagation();
-        },
-        { passive: false }
-      );
-    }
-
-    // Keyboard navigation
-    document.addEventListener("keydown", (e) => {
-      if (!document.querySelector("#gallery.active")) return;
-
-      if (e.key === "ArrowLeft") {
-        navigateSlide(-1);
-        e.preventDefault();
-      } else if (e.key === "ArrowRight") {
-        navigateSlide(1);
-        e.preventDefault();
+        container.addEventListener(
+          "touchmove",
+          (e) => {
+            e.stopPropagation();
+          },
+          { passive: false }
+        );
       }
-    });
-  }
 
-  // Navigate to next/prev slide
-  function navigateSlide(offset) {
-    stopAutoplay();
-    direction = offset > 0 ? "left" : "right";
-    currentSlide += offset;
-    showSlide(currentSlide);
-    startAutoplay();
-  }
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (!document.querySelector("#gallery.active")) return;
 
-  // Show the current slide
-  function showSlide(n) {
-    const slides = document.getElementsByClassName("slide");
-    if (!slides.length) return;
-
-    // Handle wraparound
-    if (n > slides.length) currentSlide = 1;
-    if (n < 1) currentSlide = slides.length;
-
-    // Hide all slides
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].classList.remove("active", "slide-left", "slide-right");
+        if (e.key === "ArrowLeft") {
+          navigateSlide(-1);
+          e.preventDefault();
+        } else if (e.key === "ArrowRight") {
+          navigateSlide(1);
+          e.preventDefault();
+        }
+      });
     }
 
-    // Show current slide with animation
-    slides[currentSlide - 1].classList.add("active", "slide-" + direction);
-  }
-
-  // Start autoplay
-  function startAutoplay() {
-    if (autoplayTimer) clearInterval(autoplayTimer);
-
-    autoplayTimer = setInterval(() => {
-      direction = "left";
-      currentSlide++;
+    // Navigate to next/prev slide
+    function navigateSlide(offset) {
+      stopAutoplay();
+      direction = offset > 0 ? "left" : "right";
+      currentSlide += offset;
       showSlide(currentSlide);
-    }, AUTOPLAY_DELAY);
-  }
-
-  // Stop autoplay
-  function stopAutoplay() {
-    if (autoplayTimer) {
-      clearInterval(autoplayTimer);
-      autoplayTimer = null;
+      startAutoplay();
     }
-  }
+
+    // Show the current slide
+    function showSlide(n) {
+      const slides = document.getElementsByClassName("slide");
+      if (!slides.length) return;
+
+      // Handle wraparound
+      if (n > slides.length) currentSlide = 1;
+      if (n < 1) currentSlide = slides.length;
+
+      // Hide all slides
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active", "slide-left", "slide-right");
+      }
+
+      // Show current slide with animation
+      slides[currentSlide - 1].classList.add("active", "slide-" + direction);
+    }
+
+    // Start autoplay
+    function startAutoplay() {
+      if (autoplayTimer) clearInterval(autoplayTimer);
+
+      autoplayTimer = setInterval(() => {
+        direction = "left";
+        currentSlide++;
+        showSlide(currentSlide);
+      }, AUTOPLAY_DELAY);
+    }
+
+    // Stop autoplay
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    // Public API
+    return {
+      init: function () {
+        // Initialize if gallery is already active
+        if (document.querySelector("#gallery.active")) {
+          initSlideshow();
+        }
+
+        // Watch for page changes using MutationObserver
+        const observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (
+              mutation.type === "attributes" &&
+              mutation.attributeName === "class"
+            ) {
+              const gallery = document.querySelector("#gallery");
+
+              if (gallery && gallery.classList.contains("active")) {
+                initSlideshow();
+                startAutoplay();
+              } else if (gallery && !gallery.classList.contains("active")) {
+                stopAutoplay();
+              }
+            }
+          });
+        });
+
+        // Observe all sections for class changes
+        document.querySelectorAll("section").forEach((section) => {
+          observer.observe(section, { attributes: true });
+        });
+
+        // Handle visibility change to pause/resume autoplay
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            stopAutoplay();
+          } else if (
+            !document.hidden &&
+            document.querySelector("#gallery.active")
+          ) {
+            startAutoplay();
+          }
+        });
+      },
+      navigateSlide: navigateSlide,
+    };
+  })();
+
+  // Initialize the gallery slideshow
+  gallerySlideshow.init();
 
   // Expose navigation function for button clicks
   window.plusSlides = function (offset) {
-    navigateSlide(offset);
+    gallerySlideshow.navigateSlide(offset);
   };
 });
