@@ -1,3 +1,7 @@
+// Initialize variables
+let slideIndex = 1;
+let slideDirection = "right"; // Default direction
+
 document.addEventListener("DOMContentLoaded", function () {
   // Page Navigation
   const pages = document.querySelectorAll(".page");
@@ -265,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isMusicPlaying = !isMusicPlaying;
   });
 
-  // RSVP Form handling
+  // RSVP Form Submission
   const rsvpForm = document.getElementById("rsvp-form");
 
   if (rsvpForm) {
@@ -274,110 +278,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Get form data
       const formData = {
-        attendance: document.querySelector('input[name="attendance"]:checked')
-          ?.value,
-        guestName: document.getElementById("guest-name").value,
-        guestOf: document.querySelector('input[name="guest-of"]:checked')
-          ?.value,
-        guestCount: document.getElementById("guest-count").value,
-        wishes: document.getElementById("wishes").value,
+        fullname: document.getElementById("fullname").value,
+        phone: document.getElementById("phone").value,
+        attendance: document.getElementById("attendance").value,
+        guests: document.getElementById("guests").value,
       };
 
-      // Validate form
-      if (!formData.attendance) {
-        alert("Vui lòng chọn bạn có tham dự không.");
-        return;
-      }
-
-      if (!formData.guestName) {
-        alert("Vui lòng nhập tên của bạn.");
-        return;
-      }
-
-      if (!formData.guestOf) {
-        alert("Vui lòng chọn bạn là khách của ai.");
-        return;
-      }
-
-      if (!formData.guestCount || formData.guestCount < 1) {
-        alert("Vui lòng nhập số khách hợp lệ.");
-        return;
-      }
-
-      // Here you would typically send the data to a server
-      // For now, we'll just log it and show a thank you message
+      // In a real application, you would send this data to a server
       console.log("RSVP Form Data:", formData);
 
-      // Show thank you message
-      const formContainer = rsvpForm.parentElement;
-      formContainer.innerHTML = `
-                <div class="thank-you-message">
-                    <i class="fas fa-check-circle success-icon"></i>
-                    <h3>Cảm ơn bạn đã xác nhận!</h3>
-                    <p>Chúng mình đã nhận được thông tin của bạn và rất mong được gặp bạn trong ngày trọng đại.</p>
-                    ${
-                      formData.attendance === "yes"
-                        ? "<p>Hẹn gặp bạn vào ngày cưới!</p>"
-                        : "<p>Rất tiếc khi bạn không thể tham dự. Cảm ơn bạn đã thông báo cho chúng mình.</p>"
-                    }
-                </div>
-            `;
+      // Show confirmation
+      alert("Cảm ơn bạn đã xác nhận tham dự!");
+
+      // Reset form
+      rsvpForm.reset();
     });
   }
-
-  // Number input constraints
-  const guestCountInput = document.getElementById("guest-count");
-  if (guestCountInput) {
-    guestCountInput.addEventListener("input", function () {
-      if (this.value < 1) {
-        this.value = 1;
-      }
-    });
-  }
-
-  // Gallery image zoom effect
-  const galleryImages = document.querySelectorAll(".gallery-item img");
-
-  galleryImages.forEach((img) => {
-    img.addEventListener("click", function () {
-      this.classList.toggle("zoomed");
-
-      if (this.classList.contains("zoomed")) {
-        this.style.position = "fixed";
-        this.style.top = "50%";
-        this.style.left = "50%";
-        this.style.transform = "translate(-50%, -50%) scale(1.5)";
-        this.style.maxHeight = "90vh";
-        this.style.maxWidth = "90vw";
-        this.style.zIndex = "1001";
-      } else {
-        this.style.position = "";
-        this.style.top = "";
-        this.style.left = "";
-        this.style.transform = "";
-        this.style.maxHeight = "";
-        this.style.maxWidth = "";
-        this.style.zIndex = "";
-      }
-    });
-  });
-
-  // Close zoomed image when clicking outside
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest(".gallery-item")) {
-      const zoomedImages = document.querySelectorAll(".zoomed");
-      zoomedImages.forEach((img) => {
-        img.classList.remove("zoomed");
-        img.style.position = "";
-        img.style.top = "";
-        img.style.left = "";
-        img.style.transform = "";
-        img.style.maxHeight = "";
-        img.style.maxWidth = "";
-        img.style.zIndex = "";
-      });
-    }
-  });
 
   // Add animation to the swipe hints to make them more noticeable
   const animateSwipeHints = () => {
@@ -450,4 +366,169 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   createStars();
+
+  // Gallery slideshow with autoplay functionality
+  let currentSlide = 1;
+  let direction = "right";
+  let autoplayTimer = null;
+  const AUTOPLAY_DELAY = 5000;
+  // Slideshow Gallery
+  if (document.querySelector("#gallery.active")) {
+    initSlideshow();
+  }
+
+  // Watch for page changes
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        const gallery = document.querySelector("#gallery");
+
+        if (gallery && gallery.classList.contains("active")) {
+          initSlideshow();
+          startAutoplay();
+        } else if (gallery && !gallery.classList.contains("active")) {
+          stopAutoplay();
+        }
+      }
+    });
+  });
+
+  // Observe all sections for class changes
+  document.querySelectorAll("section").forEach((section) => {
+    observer.observe(section, { attributes: true });
+  });
+
+  // Handle visibility change to pause/resume autoplay
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopAutoplay();
+    } else if (!document.hidden && document.querySelector("#gallery.active")) {
+      startAutoplay();
+    }
+  });
+
+  // Initialize slideshow
+  function initSlideshow() {
+    showSlide(currentSlide);
+    setupControls();
+    startAutoplay();
+  }
+
+  // Setup control events
+  function setupControls() {
+    // Setup slidehow container interactions
+    const container = document.querySelector(".slideshow-container");
+    if (container) {
+      // Pause on hover
+      container.addEventListener("mouseenter", stopAutoplay);
+      container.addEventListener("mouseleave", startAutoplay);
+
+      // Setup touch swipe
+      let touchStart = 0;
+      container.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStart = e.changedTouches[0].screenX;
+          stopAutoplay();
+          e.stopPropagation();
+        },
+        { passive: false }
+      );
+
+      container.addEventListener(
+        "touchend",
+        (e) => {
+          const touchEnd = e.changedTouches[0].screenX;
+          const swipeDistance = Math.abs(touchEnd - touchStart);
+
+          if (swipeDistance > 30) {
+            if (touchEnd < touchStart) {
+              navigateSlide(1);
+            } else {
+              navigateSlide(-1);
+            }
+          }
+
+          startAutoplay();
+          e.stopPropagation();
+        },
+        { passive: false }
+      );
+
+      container.addEventListener(
+        "touchmove",
+        (e) => {
+          e.stopPropagation();
+        },
+        { passive: false }
+      );
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (!document.querySelector("#gallery.active")) return;
+
+      if (e.key === "ArrowLeft") {
+        navigateSlide(-1);
+        e.preventDefault();
+      } else if (e.key === "ArrowRight") {
+        navigateSlide(1);
+        e.preventDefault();
+      }
+    });
+  }
+
+  // Navigate to next/prev slide
+  function navigateSlide(offset) {
+    stopAutoplay();
+    direction = offset > 0 ? "left" : "right";
+    currentSlide += offset;
+    showSlide(currentSlide);
+    startAutoplay();
+  }
+
+  // Show the current slide
+  function showSlide(n) {
+    const slides = document.getElementsByClassName("slide");
+    if (!slides.length) return;
+
+    // Handle wraparound
+    if (n > slides.length) currentSlide = 1;
+    if (n < 1) currentSlide = slides.length;
+
+    // Hide all slides
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active", "slide-left", "slide-right");
+    }
+
+    // Show current slide with animation
+    slides[currentSlide - 1].classList.add("active", "slide-" + direction);
+  }
+
+  // Start autoplay
+  function startAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+
+    autoplayTimer = setInterval(() => {
+      direction = "left";
+      currentSlide++;
+      showSlide(currentSlide);
+    }, AUTOPLAY_DELAY);
+  }
+
+  // Stop autoplay
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  // Expose navigation function for button clicks
+  window.plusSlides = function (offset) {
+    navigateSlide(offset);
+  };
 });

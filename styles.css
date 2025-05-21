@@ -525,8 +525,6 @@ body {
   text-transform: uppercase;
 }
 
-
-
 /* Timeline Page */
 .timeline-container {
   display: flex;
@@ -1036,32 +1034,294 @@ body {
   }
 }
 
-/* Gallery Page */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 10px;
-  overflow-y: auto;
+/* Gallery Slideshow Styles */
+.slideshow-container {
+  position: relative;
+  max-width: 800px;
+  height: 500px;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   flex-grow: 1;
 }
 
-.gallery-item {
-  border-radius: 8px;
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  /* Hide all slides by default */
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 }
 
-.gallery-item:hover {
-  transform: scale(1.03);
+.slide.active {
+  display: block;
+  /* Show only active slide */
+  animation-duration: 0.8s;
 }
 
-.gallery-item img {
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  /* Ensure image is a block element */
+}
+
+/* Animation for slides based on direction */
+.slide.slide-right {
+  animation-name: slideRight;
+}
+
+.slide.slide-left {
+  animation-name: slideLeft;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Previous and Next buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  /* Ensure buttons are above slides */
   transition: all 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .slideshow-container {
+    height: 400px;
+  }
+
+  .prev, .next {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slideshow-container {
+    height: 300px;
+  }
+
+  .prev, .next {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Autoplay Progress Indicator */
+.slideshow-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  opacity: 0.7;
+  width: 0;
+  animation: progressBar 5s linear infinite;
+}
+
+@keyframes progressBar {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Reset animation when slide changes */
+.slide.active {
+  display: block;
+  animation-duration: 0.8s;
+}
+
+.slide.active~.slideshow-container::after {
+  animation-name: progressBar;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Wedding Gift Page Styles */
+.gift-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.gift-title {
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.gift-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.gift-description {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.gift-qr-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gift-qr-container::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px dashed var(--primary-light);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.gift-qr-container:hover {
+  transform: scale(1.02);
+}
+
+.gift-qr {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Add a subtle animation to draw attention to the QR code */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 5px 30px rgba(212, 188, 149, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.gift-qr-container {
+  animation: pulse 3s infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .gift-title {
+    font-size: 2.2rem;
+  }
+
+  .gift-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .gift-description {
+    font-size: 1.1rem;
+  }
+
+  .gift-qr-container {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gift-title {
+    font-size: 2rem;
+  }
+
+  .gift-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .gift-description {
+    font-size: 1rem;
+  }
+
+  .gift-qr-container {
+    width: 280px;
+    height: 280px;
+  }
 }
 
 /* Map Page */
