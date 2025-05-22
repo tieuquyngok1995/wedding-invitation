@@ -135,10 +135,10 @@ h3 {
   flex-grow: 1;
   background-color: var(--primary-light);
   position: relative;
-  max-width: 150px;
+  max-width: 250px;
 }
 
-.ornament::before, .ornament::after {
+.ornament.left::after, .ornament.right::before {
   content: '';
   position: absolute;
   width: 8px;
@@ -151,10 +151,6 @@ h3 {
 
 .ornament.left::after {
   right: 0;
-}
-
-.ornament.right::before {
-  left: 0;
 }
 
 .page-footer {
