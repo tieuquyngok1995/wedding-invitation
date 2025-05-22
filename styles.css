@@ -11,6 +11,7 @@
   --font-script: 'Great Vibes', cursive;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
+  --image: url('https://placehold.co/1920x1080/fffbf5/f7f1e6?text=');
 }
 
 * {
@@ -28,7 +29,7 @@ body {
   font-family: var(--font-serif);
   color: var(--text-color);
   background-color: var(--bg-color);
-  background-image: url('https://placehold.co/1920x1080/fffbf5/f7f1e6?text=');
+  background-image: var(--image);
   background-size: cover;
   background-attachment: fixed;
   line-height: 1.5;
@@ -1126,7 +1127,7 @@ body {
   transform: translateY(0);
 }
 
-.thank-you-message {
+.rsvp-container .thank-you-message {
   text-align: center;
   padding: 30px;
   background-color: white;
@@ -1134,20 +1135,20 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.success-icon {
+.rsvp-container .thank-you-message .success-icon {
   font-size: 4rem;
   color: #4caf50;
   margin-bottom: 20px;
 }
 
-.thank-you-message h3 {
+.rsvp-container .thank-you-message h3 {
   font-family: var(--font-script);
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 15px;
 }
 
-.thank-you-message p {
+.rsvp-container .thank-you-message p {
   color: var(--text-color);
   font-size: 1.1rem;
   margin-bottom: 10px;
