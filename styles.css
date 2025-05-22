@@ -8,10 +8,12 @@
   --text-light: #80755d;
   --accent-color: #ab9878;
   --bg-color: #fffbf5;
+  --text-font: 'Manrope', sans-serif;
   --font-script: 'Great Vibes', cursive;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
-  --image: url('https://placehold.co/1920x1080/fffbf5/f7f1e6?text=');
+  --image: url(assets/image/background.png);
+  --overlay: url(assets/image/overlay-1.jpg);
 }
 
 * {
@@ -29,10 +31,24 @@ body {
   font-family: var(--font-serif);
   color: var(--text-color);
   background-color: var(--bg-color);
-  background-image: var(--image);
   background-size: cover;
   background-attachment: fixed;
   line-height: 1.5;
+}
+
+/* ---------- COMMON STYLE ---------- */
+h2 {
+  font-family: var(--font-script);
+  color: var(--primary-color);
+  font-weight: 400;
+  padding: 0 30px;
+}
+
+h3 {
+  font-family: var(--text-font);
+  color: var(--primary-color);
+  font-weight: 400;
+  padding: 0 30px;
 }
 
 /* ---------- LAYOUT & CONTAINERS ---------- */
@@ -50,7 +66,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-image: var(--image);
   transition: transform 0.5s ease-in-out;
   transform: translateX(100%);
   z-index: 1;
@@ -62,12 +78,14 @@ body {
 }
 
 .page-content {
-  max-width: 1000px;
   width: 90%;
   height: 90%;
+  max-width: 1000px;
   padding: 20px;
-  background-color: white;
   border-radius: 10px;
+  border: 1px solid var(--primary-light);
+  background-color: white;
+  background-image: var(--overlay);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -82,14 +100,6 @@ body {
   padding: 20px 0;
   position: relative;
   margin-bottom: 20px;
-}
-
-.page-header h2 {
-  font-family: var(--font-script);
-  font-size: 3rem;
-  color: var(--primary-color);
-  font-weight: 400;
-  padding: 0 30px;
 }
 
 .ornament {
@@ -122,6 +132,10 @@ body {
 .page-footer {
   padding: 20px 0;
   text-align: center;
+}
+
+.page-footer:hover {
+  transform: translateY(-3px);
 }
 
 /* ---------- NAVIGATION PAGE ---------- */
@@ -213,107 +227,133 @@ body {
 }
 
 /* ---------- COVER PAGE ---------- */
-#cover {
-  background-image: url('https://placehold.co/1920x1080/fffbf5/d4bc95?text=');
-  background-size: cover;
-  background-position: center;
-}
-
 .cover-content {
-  width: 90%;
-  max-width: 800px;
-  height: 90%;
-  max-height: 800px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--primary-light);
-  padding: 30px 0;
 }
 
-.cover-content .names {
+.page-content .names {
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.cover-content .name {
+.page-content .names .name {
   font-family: var(--font-script);
-  font-size: 5rem;
+  font-size: 4rem;
   color: var(--primary-color);
   font-weight: 400;
   line-height: 1.2;
 }
 
-.cover-content .and {
-  font-family: var(--font-script);
-  font-size: 3rem;
-  color: var(--accent-color);
-  margin: 10px 0;
-}
-
-.cover-content .date {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--text-light);
-  letter-spacing: 3px;
-  margin-top: 20px;
-}
-
-.cover-content .circular-frame {
+.page-content .names .heart-icon {
   position: relative;
-  width: 280px;
-  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  background-image: url(assets/image/icon-heart.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   margin: 0 auto;
 }
 
-.cover-content .circular-frame .animated-border {
+.page-content .names .heart-icon {
+  animation: pulse 1.5s infinite;
+}
+
+.page-content .circular-frame {
+  position: relative;
+  width: 200px;
+  height: 320px;
+  margin: 0 auto;
+  transition: transform 0.5s ease;
+}
+
+.page-content .circular-frame:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.page-content .circular-frame .animated-border {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50%;
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+  border-radius: 50% / 30%;
+  background: transparent;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 5px white;
   z-index: 1;
   overflow: hidden;
+  transition: inherit;
 }
 
-.cover-content .circular-frame .animated-border::before {
-  content: '';
+.page-content .circular-frame .couple-photo {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: rotate(45deg);
-  animation: shimmer 12s linear infinite;
-  z-index: 1;
-}
-
-.cover-content .circular-frame .couple-photo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
   overflow: hidden;
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  border-radius: 50% / 30%;
+  transition: inherit;
 }
 
-.cover-content .circular-frame .couple-photo img {
+.page-content .circular-frame .couple-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 50% / 30%;
+  transition: transform 0.7s ease;
+}
+
+.page-content .circular-frame:hover .couple-photo img {
+  transform: scale(1.1);
+}
+
+.page-content .date {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  margin-top: 20px;
+  position: relative;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.page-content .date::before,
+.page-content .date::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 1px;
+  background-color: var(--primary-light);
+}
+
+.page-content .date::before {
+  top: 0;
+}
+
+.page-content .date::after {
+  bottom: 0;
+}
+
+.page-content .location {
+  font-family: var(--font-serif);
+  color: var(--primary-color);
+  font-weight: 400;
+  padding: 0 30px;
+}
+
+.page-content .end {
+  height: 50px;
 }
 
 .cover-footer {
@@ -329,13 +369,17 @@ body {
   transform: translateY(-3px);
 }
 
-@keyframes shimmer {
+@keyframes pulse {
   0% {
-    transform: translateX(-50%) rotate(45deg);
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
   }
 
   100% {
-    transform: translateX(100%) rotate(45deg);
+    transform: scale(0.9);
   }
 }
 
@@ -532,7 +576,6 @@ body {
 .timeline-container {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px 10px;
   position: relative;
