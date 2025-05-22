@@ -14,7 +14,9 @@
   --font-sans: 'Montserrat', sans-serif;
   --image: url(assets/image/background.png);
   --overlay: url(assets/image/overlay-1.jpg);
-  --overlay-flower: url(assets/image/icon-flowers-1.png);
+  --overlay-flower-left: url(assets/image/icon-flowers-1.png);
+  --overlay-flower-center: url(assets/image/icon-flowers-4.png);
+  --overlay-flower-right: url(assets/image/icon-flowers-3.png);
   --icon-flower: url(assets/image/icon-flowers-2.png);
 }
 
@@ -65,7 +67,6 @@ h3 {
   position: absolute;
   width: 150px;
   height: 300px;
-  background-image: var(--overlay-flower);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left center;
@@ -77,12 +78,21 @@ h3 {
 .overlay-left {
   top: 60%;
   left: 0;
+  background-image: var(--overlay-flower-left);
   animation: floatUpDownLeft 6s ease-in-out infinite;
+}
+
+.overlay-center {
+  top: -10%;
+  left: 75%;
+  transform: rotate(10deg);
+  background-image: var(--overlay-flower-center);
 }
 
 .overlay-right {
   top: 0;
-  right: 0;
+  right: -5px;
+  background-image: var(--overlay-flower-right);
   animation: floatUpDownRight 6s ease-in-out infinite;
 }
 
@@ -128,6 +138,10 @@ h3 {
   padding: 20px 0;
   position: relative;
   margin-bottom: 20px;
+}
+
+.page-header h2 {
+  font-size: 3rem;
 }
 
 .ornament {
@@ -178,15 +192,15 @@ h3 {
 
 @keyframes floatUpDownRight {
   0% {
-    transform: translateY(70px) scaleX(-1);
+    transform: rotate(0deg) translateX(0);
   }
 
   50% {
-    transform: translateY(0) scaleX(-1);
+    transform: rotate(-10deg) translateX(25px);
   }
 
   100% {
-    transform: translateY(70px) scaleX(-1);
+    transform: rotate(0deg) translateX(0);
   }
 }
 
@@ -341,21 +355,6 @@ h3 {
   animation: slowFloat 4s ease-in-out infinite;
 }
 
-/* Thêm animation cho biểu tượng hoa */
-@keyframes slowFloat {
-  0% {
-    transform: rotate(0deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(-5deg) translateY(-10px);
-  }
-
-  100% {
-    transform: rotate(0deg) translateY(0);
-  }
-}
-
 .page-content .circular-frame:hover {
   transform: scale(1.1);
   z-index: 10;
@@ -464,6 +463,20 @@ h3 {
 
   100% {
     transform: scale(0.9);
+  }
+}
+
+@keyframes slowFloat {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-5deg) translateY(-10px);
+  }
+
+  100% {
+    transform: rotate(0deg) translateY(0);
   }
 }
 
