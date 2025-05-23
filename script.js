@@ -21,12 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-3";
     const timelineImage4 =
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-4";
-    const programImage1 =
-      "https://placehold.co/300x300/f7f1e6/d4bc95?text=don+khach";
-    const programImage2 =
-      "https://placehold.co/300x300/f7f1e6/d4bc95?text=lam+le";
-    const programImage3 =
-      "https://placehold.co/300x300/f7f1e6/d4bc95?text=khai+tiec";
     const slideshowImage1 =
       "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-1";
     const slideshowImage2 =
@@ -58,9 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("timeline-image-2").src = timelineImage2;
     document.getElementById("timeline-image-3").src = timelineImage3;
     document.getElementById("timeline-image-4").src = timelineImage4;
-    document.getElementById("program-image-1").src = programImage1;
-    document.getElementById("program-image-2").src = programImage2;
-    document.getElementById("program-image-3").src = programImage3;
     document.getElementById("slide-image-1").src = slideshowImage1;
     document.getElementById("slide-image-2").src = slideshowImage2;
     document.getElementById("slide-image-3").src = slideshowImage3;

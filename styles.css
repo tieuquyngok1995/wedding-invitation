@@ -403,7 +403,6 @@ h3 {
   font-size: 1.8rem;
   color: var(--text-light);
   letter-spacing: 3px;
-  margin-top: 20px;
   position: relative;
   padding: 10px 0;
   display: inline-block;
@@ -430,18 +429,19 @@ h3 {
 
 .page-content .location {
   font-family: var(--font-serif);
+  font-size: 1.2rem;
   color: var(--primary-color);
   font-weight: 400;
   padding: 0 30px;
 }
 
 .page-content .end {
-  height: 50px;
+  height: 65px;
 }
 
 .cover-footer {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   text-align: center;
   width: 100%;
   cursor: pointer;
@@ -497,12 +497,16 @@ h3 {
 .invitation-text .family-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
 }
 
 .invitation-text .family {
   flex: 1;
-  padding: 20px;
+}
+
+.invitation-text .family .represent {
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 5px;
 }
 
 .invitation-text .family .parent-names {
@@ -510,21 +514,35 @@ h3 {
   margin-bottom: 5px;
 }
 
-.invitation-text .family .address {
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 20px;
+.invitation-text .invitation-friend {
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: var(--accent-color);
 }
 
-.invitation-text .family .child-info {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.invitation-text .invitation-friend-sm {
+  font-size: 1.3rem;
 }
 
-.invitation-text .family .child-name {
+.invitation-text .invitation-friend-sm-i {
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.invitation-text .family .bride-name, .groom-name {
+  font-size: 3rem;
+  margin-bottom: 5px;
+  padding-top: 25px;
   font-family: var(--font-script);
-  font-size: 2.2rem;
-  color: var(--primary-color);
+}
+
+.invitation-text .family .bride-name {
+  margin-left: 100px;
+}
+
+.invitation-text .family .groom-name {
+  margin-left: -30px;
 }
 
 .invitation-text .family-divider {
@@ -535,6 +553,18 @@ h3 {
   position: relative;
 }
 
+.invitation-text .family-divider .heart-icon {
+  padding: 20px;
+  background-image: url(assets/image/icon-heart-1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.invitation-text .family-divider .heart-icon.pulse {
+  animation: pulse 1.5s ease infinite;
+}
+
 .invitation-text .family-divider::before, .family-divider::after {
   content: '';
   width: 1px;
@@ -542,23 +572,12 @@ h3 {
   background-color: var(--primary-light);
 }
 
-.invitation-text .family-divider .heart-icon {
-  padding: 15px;
-  color: var(--primary-color);
-  font-size: 1.5rem;
-}
-
-.invitation-text .family-divider .heart-icon.pulse {
-  animation: pulse 1.5s ease infinite;
-}
-
 .invitation-text .invitation-note {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .invitation-text .invitation-note .time-info {
   font-size: 1.4rem;
-  color: var(--primary-dark);
   margin: 15px 0;
 }
 
@@ -570,8 +589,102 @@ h3 {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-style: italic;
+  font-weight: 700;
   color: var(--accent-color);
   margin-top: 30px;
+}
+
+/* ---------- WEDDING PROGRAM PAGE ---------- */
+.program-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.program-container .program-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.program-container .program-item .program-time {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--primary-color);
+  font-family: var(--font-serif);
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.program-container .program-item:nth-child(2) {
+  margin-top: 70px;
+}
+
+.program-container .program-item:nth-child(3) {
+  margin-top: 140px;
+}
+
+.program-container .program-item .program-time::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  left: -15px;
+  border-radius: 50%;
+  background-color: rgba(212, 188, 149, 0.2);
+  z-index: -1;
+}
+
+.program-container .program-item .program-time::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-light);
+}
+
+.program-container .program-item .program-image-container {
+  height: 150px;
+  position: relative;
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.program-container .program-item .program-image-container .program-image-flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.program-container .program-item .program-image-container:hover .program-image-flipper {
+  transform: rotateY(180deg);
+}
+
+.program-container .program-item .program-title {
+  font-family: var(--font-script);
+  font-size: 1.7rem;
+  color: var(--primary-color);
+  margin: 15px 0 10px;
+}
+
+.program-container .program-item .program-subtitle {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 90%;
 }
 
 /* ---------- COUPLE & PROFILE ELEMENTS PAGE ---------- */
@@ -873,116 +986,6 @@ h3 {
   font-size: 1.5rem;
   color: var(--accent-color);
   font-style: italic;
-}
-
-/* ---------- WEDDING PROGRAM PAGE ---------- */
-.program-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  flex-grow: 1;
-  overflow-y: auto;
-}
-
-.program-container .program-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 350px;
-  text-align: center;
-  position: relative;
-}
-
-.program-container .program-item .program-time {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--primary-color);
-  font-family: var(--font-serif);
-  margin-bottom: 15px;
-  position: relative;
-}
-
-.program-container .program-item .program-time::before {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  top: -15px;
-  left: -15px;
-  border-radius: 50%;
-  background-color: rgba(212, 188, 149, 0.2);
-  z-index: -1;
-}
-
-.program-container .program-item .program-time::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 2px;
-  background-color: var(--primary-light);
-}
-
-.program-container .program-item .program-image-container {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  perspective: 1000px;
-  margin: 20px 0;
-}
-
-.program-container .program-item .program-image-container .program-image-flipper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.program-container .program-item .program-image-container:hover .program-image-flipper {
-  transform: rotateX(180deg);
-}
-
-.program-container .program-item .program-image-container .program-image-front, .program-image-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.program-container .program-item .program-image-container .program-image-back {
-  transform: rotateX(180deg);
-}
-
-.program-container .program-item .program-image-container .program-image-front img, .program-image-back img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.program-container .program-item .program-title {
-  font-family: var(--font-script);
-  font-size: 2.2rem;
-  color: var(--primary-color);
-  margin: 15px 0 10px;
-}
-
-.program-container .program-item .program-subtitle {
-  color: var(--text-light);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 90%;
 }
 
 /* ---------- GALLERY SLIDESHOW ---------- */
