@@ -9,10 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const coverCoupleImage =
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=QT+%26+NN";
-    const coverBrideProfileImage =
-      "https://placehold.co/400x500/f7f1e6/d4bc95?text=Nguy%C3%AAn+Ng%E1%BB%8Dc";
-    const coverGroomProfileImage =
-      "https://placehold.co/400x500/f7f1e6/d4bc95?text=Qu%E1%BB%91c+Tu%E1%BA%A5n";
     const timelineImage1 =
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-1";
     const timelineImage2 =
@@ -44,10 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const qrImage = "https://placehold.co/400x400/f7f1e6/d4bc95?text=QR+Code";
 
     document.getElementById("cover-couple-image").src = coverCoupleImage;
-    document.getElementById("couple-bride-profile-image").src =
-      coverBrideProfileImage;
-    document.getElementById("couple-groom-profile-image").src =
-      coverGroomProfileImage;
     document.getElementById("timeline-image-1").src = timelineImage1;
     document.getElementById("timeline-image-2").src = timelineImage2;
     document.getElementById("timeline-image-3").src = timelineImage3;
@@ -195,6 +187,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (
           e.target.closest(".nav-dots") ||
           e.target.closest(".music-player") ||
+          e.target.closest(".fa-music") ||
+          e.target.closest(".fa-pause") ||
           e.target.closest("form") ||
           e.target.closest(".gallery-item") ||
           e.target.closest(".swipe-hint")
@@ -353,10 +347,6 @@ document.addEventListener("DOMContentLoaded", function () {
           backgroundMusic.pause();
           musicToggle.innerHTML = '<i class="fas fa-music"></i>';
         } else {
-          backgroundMusic.play().catch((error) => {
-            console.error("Error playing audio:", error);
-            alert("Vui lòng tương tác với trang web để phát nhạc.");
-          });
           musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
         }
 
