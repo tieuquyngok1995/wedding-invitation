@@ -149,6 +149,10 @@ h3 {
   font-size: 3rem;
 }
 
+.page-header img {
+  height: 28px;
+}
+
 .ornament {
   height: 2px;
   flex-grow: 1;
@@ -432,7 +436,7 @@ h3 {
 /* ---------- INVITATION PAGE ---------- */
 .invitation-text {
   text-align: center;
-  margin-top: -30px;
+  margin-top: -20px;
   padding: 0 20px;
   flex-grow: 1;
 }
@@ -456,44 +460,44 @@ h3 {
 
 .invitation-text .family .represent {
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   margin-bottom: 5px;
 }
 
 .invitation-text .family .parent-names {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
 .invitation-text .invitation-friend {
   padding-top: 10px;
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   color: var(--accent-color);
 }
 
 .invitation-text .invitation-friend-sm {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .invitation-text .invitation-friend-sm-i {
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .invitation-text .family .bride-name, .groom-name {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 5px;
   padding-top: 25px;
   font-family: var(--font-script);
 }
 
 .invitation-text .family .bride-name {
-  margin-left: 100px;
+  margin-left: 60px;
 }
 
 .invitation-text .family .groom-name {
-  margin-left: -30px;
+  margin-left: 15px;
 }
 
 .invitation-text .family-divider {
@@ -528,17 +532,17 @@ h3 {
 }
 
 .invitation-text .invitation-note .time-info {
-  font-size: 1.4rem;
-  margin: 15px 0;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .invitation-text .invitation-note .venue-note, .address-note {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .invitation-text .invitation-note .closing-note {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-style: italic;
   font-weight: 700;
   color: var(--accent-color);
