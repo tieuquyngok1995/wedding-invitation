@@ -499,6 +499,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let autoplayTimer = null;
     const AUTOPLAY_DELAY = 5000;
 
+    let progressBar = null;
+    let progressBarAnimation = null;
+
     // Initialize slideshow
     function initSlideshow() {
       showSlide(currentSlide);
@@ -511,10 +514,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Setup slidehow container interactions
       const container = document.querySelector(".slideshow-container");
       if (container) {
-        // Pause on hover
-        container.addEventListener("mouseenter", stopAutoplay);
-        container.addEventListener("mouseleave", startAutoplay);
-
         // Setup touch swipe
         let touchStart = 0;
         container.addEventListener(
@@ -582,11 +581,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Show current slide with animation
       slides[currentSlide - 1].classList.add("active", "slide-" + direction);
+
+      updateProgressBar();
     }
 
     // Start autoplay
     function startAutoplay() {
-      if (autoplayTimer) clearInterval(autoplayTimer);
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+
+      updateProgressBar();
 
       autoplayTimer = setInterval(() => {
         direction = "left";
@@ -601,6 +607,37 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(autoplayTimer);
         autoplayTimer = null;
       }
+    }
+
+    function createProgressBar() {
+      let progressContainer = document.querySelector(".slideshow-progress");
+      if (!progressContainer) {
+        progressContainer = document.createElement("div");
+        progressContainer.className = "slideshow-progress";
+
+        progressBar = document.createElement("div");
+        progressBar.className = "progress-bar";
+
+        progressContainer.appendChild(progressBar);
+        const container = document.querySelector(".slideshow-container");
+        if (container) {
+          container.appendChild(progressContainer);
+        }
+      } else {
+        progressBar = progressContainer.querySelector(".progress-bar");
+      }
+    }
+
+    function updateProgressBar() {
+      if (!progressBar) createProgressBar();
+
+      if (progressBarAnimation) {
+        progressBar.style.animation = "none";
+        progressBar.offsetHeight; // Trigger reflow
+      }
+
+      progressBar.style.animation = `progressBar ${AUTOPLAY_DELAY}ms linear`;
+      progressBarAnimation = true;
     }
 
     // Public API
