@@ -178,7 +178,7 @@ h3 {
 }
 
 .page-footer {
-  padding: 20px 0;
+  padding: 20px 5%;
   text-align: center;
 }
 
@@ -317,6 +317,7 @@ h3 {
   width: 200px;
   height: 320px;
   margin: 0 auto;
+  z-index: 4;
 }
 
 .page-content .circular-frame::after {
@@ -421,7 +422,7 @@ h3 {
   position: absolute;
   bottom: 40px;
   text-align: center;
-  width: 100%;
+  width: 85%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -1432,41 +1433,6 @@ h3 {
 
 /* ---------- RESPONSIVE MOBILE STYLES ---------- */
 
-
-/* phone large (iPhone Plus, Pro Max, Samsung Galaxy lớn) */
-@media (min-width: 429px) and (max-width: 576px) {
-
-  /* Font sizes */
-  .names h2 {
-    font-size: 2.8rem;
-  }
-
-  /* Cover frame */
-  .circular-frame {
-    width: 220px;
-    height: 320px;
-  }
-
-  /* Timeline */
-  .timeline-container .timeline-image-vertical {
-    width: 150px;
-    height: 220px;
-  }
-
-  /* Countdown */
-  .countdown-page-content .animated-countdown .countdown-number {
-    font-size: 4rem;
-    width: 90px;
-    height: 90px;
-    line-height: 90px;
-  }
-
-  /* RSVP form */
-  .rsvp-container .rsvp-form {
-    width: 80%;
-  }
-}
-
 /* all phone */
 @media (max-width: 576px) {
   .music-player {
@@ -1503,12 +1469,8 @@ h3 {
     transform: rotate(-60deg);
   }
 
-  .cover-footer {
-    bottom: 10px;
-  }
-
   .swipe-hint {
-    font-size: 0.9rem;
+    padding: 6px;
   }
 
   .nav-dots {
@@ -1519,6 +1481,89 @@ h3 {
   .nav-dots .dot {
     width: 8px;
     height: 8px;
+  }
+
+  .page-content .names .name {
+    font-size: 3.5rem;
+  }
+
+  .page-content .names .heart-icon {
+    width: 80%;
+  }
+
+  .page-content .circular-frame {
+    width: 140px;
+    height: 220px;
+  }
+
+  .page-content .circular-frame::after {
+    top: -10px;
+    right: -25px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .page-content .circular-frame .animated-border {
+    box-shadow: 0 0 0 2px white;
+  }
+
+  .page-content .circular-frame .couple-photo {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .page-content .date {
+    top: 1%;
+    font-size: 1.4rem;
+    padding: 4px 0;
+  }
+
+  .page-content .location {
+    font-size: 1rem;
+  }
+
+  .page-content .end {
+    height: 40px;
+  }
+
+  .cover-footer {
+    bottom: 10px;
+  }
+}
+
+/* phone large (iPhone Plus, Pro Max, Samsung Galaxy lớn) */
+@media (min-width: 429px) and (max-width: 576px) {
+
+  /* Font sizes */
+  .names h2 {
+    font-size: 2.8rem;
+  }
+
+  /* Cover frame */
+  .circular-frame {
+    width: 220px;
+    height: 320px;
+  }
+
+  /* Timeline */
+  .timeline-container .timeline-image-vertical {
+    width: 150px;
+    height: 220px;
+  }
+
+  /* Countdown */
+  .countdown-page-content .animated-countdown .countdown-number {
+    font-size: 4rem;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+  }
+
+  /* RSVP form */
+  .rsvp-container .rsvp-form {
+    width: 80%;
   }
 }
 
@@ -1572,6 +1617,10 @@ h3 {
     ;
   }
 
+  .page-header-text {
+    font-size: 1.5rem;
+  }
+
   .page-content .names .name {
     font-size: 3rem;
   }
@@ -1580,16 +1629,40 @@ h3 {
     height: 50px;
   }
 
-  .page-header-text {
-    font-size: 1.5rem;
+  .page-content .circular-frame {
+    width: 140px;
+    height: 220px;
+  }
+
+  .page-content .circular-frame::after {
+    top: -10px;
+    right: -25px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .page-content .circular-frame .animated-border {
+    box-shadow: 0 0 0 2px white;
+  }
+
+  .page-content .circular-frame .couple-photo {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
   }
 
   .page-content .date {
+    top: 1%;
     font-size: 1.4rem;
-    padding: 2px 0;
+    padding: 4px 0;
   }
 
   .page-content .location {
     font-size: 1rem;
+  }
+
+  .page-content .end {
+    height: 40px;
   }
 }
