@@ -178,7 +178,7 @@ h3 {
 }
 
 .page-footer {
-  padding: 20px 5%;
+  padding: 2% 5%;
   text-align: center;
 }
 
@@ -411,7 +411,7 @@ h3 {
   font-size: 1.2rem;
   color: var(--primary-color);
   font-weight: 400;
-  padding: 0 30px;
+  padding: 0 15%;
 }
 
 .page-content .end {
@@ -526,7 +526,7 @@ h3 {
 }
 
 .invitation-text .invitation-note {
-  margin-top: 25px;
+  margin-top: 3%;
 }
 
 .invitation-text .invitation-note .time-info {
@@ -1433,7 +1433,7 @@ h3 {
 
 /* ---------- RESPONSIVE MOBILE STYLES ---------- */
 
-/* all phone */
+/* ---------- All phone ---------- */
 @media (max-width: 576px) {
   .music-player {
     bottom: 5px;
@@ -1448,6 +1448,14 @@ h3 {
   #music-toggle i {
     font-size: 1rem;
     ;
+  }
+
+  .page-header {
+    padding: 0;
+  }
+
+  .page-header img {
+    height: 18px;
   }
 
   .page-content {
@@ -1515,7 +1523,6 @@ h3 {
   }
 
   .page-content .date {
-    top: 1%;
     font-size: 1.4rem;
     padding: 4px 0;
   }
@@ -1531,10 +1538,95 @@ h3 {
   .cover-footer {
     bottom: 10px;
   }
+
+  .invitation-text {
+    padding: 0;
+  }
+
+  .invitation-text .family-info-change {
+    width: 110%;
+    margin-left: -8%;
+  }
+
+  .invitation-text .family .represent {
+    font-size: 1.2rem;
+  }
+
+  .invitation-text .family .parent-names {
+    font-size: 1.1rem;
+  }
+
+  .invitation-text .invitation-friend {
+    font-size: 1.6rem;
+  }
+
+  .invitation-text .invitation-friend-sm {
+    font-size: 1.1rem;
+  }
+
+  .invitation-text .invitation-friend-sm-i {
+    font-size: 1.2rem;
+  }
+
+  .invitation-text .family .bride-name, .groom-name {
+    font-size: 1.5rem;
+  }
+
+  .invitation-text .family .bride-name {
+    margin-left: 15%;
+  }
+
+  .invitation-text .family .groom-name {
+    margin-left: 4%;
+  }
+
+  .invitation-text .family-divider .heart-icon {
+    padding: 12px;
+  }
+
+  .invitation-text .invitation-note .venue-note, .address-note {
+    font-size: 1.1rem;
+  }
+
+  .invitation-text .invitation-note .time-info {
+    font-size: 1.1rem;
+  }
+
+  .invitation-text .invitation-note .closing-note {
+    font-size: 1.2rem;
+  }
+
+  .program-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .program-container .program-item {
+    margin-bottom: 20px;
+  }
+
+  .program-container .program-item .program-time {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .program-container .program-item:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .program-container .program-item:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .timeline-container {
+    padding: 10px;
+    overflow-y: auto;
+  }
 }
 
-/* phone large (iPhone Plus, Pro Max, Samsung Galaxy lớn) */
-@media (min-width: 429px) and (max-width: 576px) {
+/* ---------- Phone large (iPhone Plus, Pro Max, Samsung Galaxy L) ---------- */
+@media (min-width: 429px) and (max-width: 530px) {
 
   /* Font sizes */
   .names h2 {
@@ -1567,45 +1659,29 @@ h3 {
   }
 }
 
-/* phone medium (iPhone 6-8, iPhone X/11/12/13) */
+/* ---------- Phone medium (iPhone 6-8, iPhone X/11/12/13) ---------- */
 @media (min-width: 376px) and (max-width: 428px) {
 
-  /* Font sizes */
-  .names h2 {
-    font-size: 2.5rem;
+
+  .page-content .names .name {
+    font-size: 3.15rem;
   }
 
-  /* Cover frame */
-  .circular-frame {
-    width: 200px;
-    height: 300px;
+  .page-content .location {
+    padding: 0 10%;
   }
 
-  /* Timeline */
-  .timeline-container .timeline-item {
-    padding: 15px 0;
+  .invitation-text .family .bride-name, .groom-name {
+    font-size: 1.4rem;
   }
 
-  .timeline-container .timeline-image-vertical {
-    width: 140px;
-    height: 200px;
+  .invitation-text .family .groom-name {
+    margin-left: 0%;
   }
 
-  /* Countdown */
-  .countdown-page-content .animated-countdown .countdown-number {
-    font-size: 3.5rem;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-  }
-
-  /* RSVP form */
-  .rsvp-container .rsvp-form {
-    width: 85%;
-  }
 }
 
-/* phone small (iPhone SE, điện thoại Android nhỏ) */
+/* ---------- Phone small (iPhone SE, Android small) ---------- */
 @media (max-width: 375px) {
   #music-toggle {
     width: 24px;
@@ -1622,7 +1698,7 @@ h3 {
   }
 
   .page-content .names .name {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .page-content .names .heart-icon {
@@ -1660,9 +1736,235 @@ h3 {
 
   .page-content .location {
     font-size: 1rem;
+    padding: 0
   }
 
   .page-content .end {
-    height: 40px;
+    height: 5%;
+  }
+
+
+  .invitation-text .family-info-change {
+    width: 115%;
+    margin-left: -13%;
+  }
+
+  .invitation-text .family .represent {
+    font-size: 1.1rem;
+  }
+
+  .invitation-text .family .parent-names {
+    font-size: 1rem;
+  }
+
+  .invitation-text .invitation-friend {
+    font-size: 1.4rem;
+  }
+
+  .invitation-text .invitation-friend-sm-i {
+    font-size: 1rem;
+  }
+
+  .invitation-text .family .bride-name, .groom-name {
+    font-size: 1.2rem;
+  }
+
+  .invitation-text .family .groom-name {
+    margin-left: 0%;
+  }
+
+  .invitation-text .invitation-note .venue-note, .address-note {
+    font-size: 1rem;
+  }
+
+  .invitation-text .invitation-note .time-info {
+    font-size: 1rem;
+  }
+
+  .invitation-text .invitation-note .closing-note {
+    font-size: 1rem;
+  }
+}
+
+/* ---------- Phone large (iPhone Plus, Pro Max, Samsung Galaxy L) ---------- */
+@media (min-height: 853px) and (max-height: 932px) {
+  .page-content .circular-frame {
+    margin-top: 20%;
+  }
+
+  .page-content .date {
+    margin-top: 30%;
+  }
+
+  .page-content .end {
+    height: 5%;
+  }
+
+  .invitation-text {
+    padding-top: 5%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 5%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 8%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 27%;
+  }
+}
+
+/* ---------- Phone medium (iPhone 6-8, iPhone X/11/12/13) ---------- */
+@media (min-height: 813px) and (max-height: 852px) {
+  .page-content .circular-frame {
+    margin-top: 20%;
+  }
+
+  .page-content .date {
+    margin-top: 20%;
+  }
+
+  .page-content .end {
+    height: 5%;
+  }
+
+  .invitation-text {
+    padding-top: 5%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 5%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 8%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 8%;
+  }
+}
+
+/* ---------- Phone regular (iPhone Plus, mid-range Android) ---------- */
+@media (min-height: 741px) and (max-height: 812px) {
+  .page-content .date {
+    margin-top: 15%;
+  }
+
+  .page-content .end {
+    height: 5%;
+  }
+
+  .invitation-text {
+    padding-top: 5%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 5%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 8%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 8%;
+  }
+}
+
+/* ---------- Phone small (iPhone 6/7/8, SE new) ---------- */
+
+
+@media (max-height: 813px) and (max-width: 375px) {
+  .invitation-text {
+    padding-top: 8%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 5%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 4%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 15%;
+  }
+}
+
+@media (max-height: 813px) and (max-width: 428px) {
+  .invitation-text {
+    padding-top: 6%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 2%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 4%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 10%;
+  }
+}
+
+@media (max-height: 740px) {
+
+  .invitation-text {
+    padding-top: 5%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 5%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 10%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 18%;
+  }
+}
+
+@media (max-height: 740px) and (max-width: 428px) {
+  .invitation-text {
+    padding-top: 2%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 2%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 5%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 7%;
+  }
+}
+
+@media (max-height: 740px) and (max-width: 375px) {
+  .invitation-text {
+    padding-top: 2%;
+  }
+
+  .invitation-text .invitation-friend {
+    padding-bottom: 2%;
+  }
+
+  .invitation-text .family-info-change {
+    padding-top: 2%;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 5%;
   }
 }
