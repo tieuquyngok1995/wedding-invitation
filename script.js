@@ -238,14 +238,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function parseWeddingDate() {
       if (dateElement) {
         // Parse the date from the format "DD.MM.YYYY"
-        const dateParts = dateElement.textContent.split(".");
-        if (dateParts.length === 3) {
+        const dateParts = dateElement.textContent.split(" ");
+        if (dateParts.length === 4) {
           const day = parseInt(dateParts[0], 10);
-          const month = parseInt(dateParts[1], 10) - 1; // Months are 0-indexed in JavaScript
-          const year = parseInt(dateParts[2], 10);
+          const month = parseInt(dateParts[2].replace(/\.$/, ""), 10) - 1; // Months are 0-indexed in JavaScript
+          const year = parseInt(dateParts[3], 10);
 
           // Create the date object with time set to 10:30 AM
-          return new Date(year, month, day, 10, 30, 0).getTime();
+          return new Date(year, month, day, 11, 0, 0).getTime();
         }
       }
 
