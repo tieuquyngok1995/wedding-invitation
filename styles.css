@@ -2286,7 +2286,7 @@ h3 {
 }
 
 /* ---------- Height ---------- */
-@media (max-height: 932px) {
+@media (max-height: 932px) and (max-width: 576px) {
   .page-content .circular-frame {
     margin-top: 10%;
   }
@@ -2363,7 +2363,7 @@ h3 {
   }
 }
 
-@media (min-height: 813px) and (max-height: 852px) {
+@media (min-height: 813px) and (max-height: 852px) and (max-width: 576px) {
   .page-content .circular-frame {
     margin-top: 10%;
   }
@@ -2408,7 +2408,7 @@ h3 {
   }
 }
 
-@media (min-height: 741px) and (max-height: 812px) {
+@media (min-height: 741px) and (max-height: 812px) and (max-width: 576px) {
   .page-content .date {
     margin-top: 10%;
   }
@@ -2466,7 +2466,7 @@ h3 {
   }
 }
 
-@media (max-height: 740px) {
+@media (max-height: 740px) and (max-width: 576px) {
 
   .invitation-text {
     padding-top: 5%;
@@ -2530,7 +2530,7 @@ h3 {
   }
 }
 
-@media (max-height: 680px) {
+@media (max-height: 680px) and (max-width: 576px) {
 
   .invitation-text {
     padding-top: 0;
