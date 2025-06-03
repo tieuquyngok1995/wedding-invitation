@@ -4,8 +4,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   const pageLoad = function () {
-    const params = new URLSearchParams(window.location.search);
-    const mode = params.get("mode");
 
     const coverCoupleImage =
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=QT+%26+NN";
@@ -339,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const musicPlayer = (function () {
     const musicToggle = document.getElementById("music-toggle");
     const backgroundMusic = document.getElementById("background-music");
-    let isMusicPlaying = false;
+    let isMusicPlaying = true;
 
     function init() {
       musicToggle.addEventListener("click", function () {
@@ -347,6 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
           backgroundMusic.pause();
           musicToggle.innerHTML = '<i class="fas fa-music"></i>';
         } else {
+          backgroundMusic.play();
           musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
         }
 
@@ -405,9 +404,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Vui lòng nhập số khách hợp lệ.");
             return;
           }
-
-          // In a real application, you would send this data to a server
-          console.log("RSVP Form Data:", formData);
 
           // Show thank you message
           const formContainer = rsvpForm.parentElement;
