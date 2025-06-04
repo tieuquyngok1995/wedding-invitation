@@ -364,49 +364,53 @@ document.addEventListener("DOMContentLoaded", function () {
   // 4. RSVP FORM HANDLING
   // ========================================================================
   const rsvpManager = (function () {
-    const rsvpForm = document.getElementById("rsvp-form");
+    const form = document.getElementById("rsvp-form");
+    const status = document.getElementById("form-status");
 
-    function init() {
-      if (rsvpForm) {
-        rsvpForm.addEventListener("submit", function (event) {
-          event.preventDefault();
+    async function submitForm(event) {
+      event.preventDefault();
 
-          // Get form data
-          const formData = {
-            attendance: document.querySelector(
-              'input[name="attendance"]:checked'
-            )?.value,
-            guestName: document.getElementById("guest-name").value,
-            guestOf: document.querySelector('input[name="guest-of"]:checked')
-              ?.value,
-            guestCount: document.getElementById("guest-count").value,
-            wishes: document.getElementById("wishes").value,
-          };
+      const formData = new FormData(form);
+      const data = {
+        guestName: formData.get("guest-name"),
+        attendance: formData.get("attendance"),
+        guestOf: formData.get("guest-of"),
+        guestCount: formData.get("guest-count"),
+        wishes: formData.get("wishes"),
+      };
 
-          // Validate form
-          if (!formData.attendance) {
-            alert("Vui lòng chọn bạn có tham dự không.");
-            return;
-          }
+      // Validate form
+      if (!data.attendance) {
+        alert("Vui lòng chọn bạn có tham dự không.");
+        return;
+      }
 
-          if (!formData.guestName) {
-            alert("Vui lòng nhập tên của bạn.");
-            return;
-          }
+      if (!data.guestName) {
+        alert("Vui lòng nhập tên của bạn.");
+        return;
+      }
 
-          if (!formData.guestOf) {
-            alert("Vui lòng chọn bạn là khách của ai.");
-            return;
-          }
+      if (!data.guestOf) {
+        alert("Vui lòng chọn bạn là khách của ai.");
+        return;
+      }
 
-          if (!formData.guestCount || formData.guestCount < 1) {
-            alert("Vui lòng nhập số khách hợp lệ.");
-            return;
-          }
-
-          // Show thank you message
-          const formContainer = rsvpForm.parentElement;
-          formContainer.innerHTML = `
+      if (!data.guestCount || data.guestCount < 1) {
+        alert("Vui lòng nhập số khách hợp lệ.");
+        return;
+      }
+      const queryParams = new URLSearchParams(data).toString();
+      fetch(
+        "https://script.google.com/macros/s/AKfycbzuJy4zw8Mighk6mUZwdPuJcfcIKNaIvu3EHXlAQIqonj1QNroUVWAglli5S7o-DHkFyg/exec" +
+          "?" +
+          queryParams
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.result === "success") {
+            // Show thank you message
+            const formContainer = rsvpForm.parentElement;
+            formContainer.innerHTML = `
                 <div class="thank-you-message">
                     <i class="fas fa-check-circle success-icon"></i>
                     <h3>Cảm ơn bạn đã xác nhận!</h3>
@@ -419,10 +423,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
-          // Reset form
-          rsvpForm.reset();
+            // Reset form
+            rsvpForm.reset();
+          } else {
+            console.error("Gửi thất bại: " + result.error);
+          }
+        })
+        .catch((error) => {
+          console.error("Lỗi gửi form: " + error.message);
         });
-      }
+    }
+
+    function init() {
+      form.addEventListener("submit", submitForm);
     }
 
     return {
