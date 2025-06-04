@@ -438,8 +438,8 @@ h3 {
 /* ---------- INVITATION PAGE ---------- */
 .invitation-text {
   text-align: center;
-  margin-top: -20px;
-  padding: 0 20px;
+  margin-top: -2%;
+  padding: 0 2%;
   flex-grow: 1;
 }
 
@@ -453,7 +453,7 @@ h3 {
 .invitation-text .family-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 1%;
 }
 
 .invitation-text .family {
@@ -530,7 +530,7 @@ h3 {
 }
 
 .invitation-text .invitation-note {
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 .invitation-text .invitation-note .time-info {
@@ -548,7 +548,7 @@ h3 {
   font-style: italic;
   font-weight: 700;
   color: var(--accent-color);
-  margin-top: 30px;
+  margin-top: 2%;
 }
 
 /* ---------- WEDDING PROGRAM PAGE ---------- */
@@ -650,7 +650,7 @@ h3 {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 20px 10px;
+  padding: 5px 10px;
   position: relative;
   overflow-y: auto;
   flex-grow: 1;
@@ -661,7 +661,6 @@ h3 {
   display: flex;
   justify-content: flex-start;
   margin: 15px 0;
-  padding: 15px 0;
   position: relative;
 }
 
@@ -670,7 +669,7 @@ h3 {
 }
 
 .timeline-container .timeline-info {
-  width: 62%;
+  width: 65%;
   padding-top: 8%;
   display: flex;
   flex-direction: column;
@@ -683,28 +682,34 @@ h3 {
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 10px;
+  margin-left: -20%;
+
 }
 
 .timeline-container .timeline-info p {
   color: var(--text-light);
   font-size: 1.3rem;
   line-height: 1.2;
-  max-width: 78%;
+  max-width: 90%;
 }
 
 .timeline-container .timeline-item:nth-child(2n) .timeline-info {
-  padding-left: 10%;
+  padding-left: 7%;
+}
+
+.timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
+  margin-left: 15%;
 }
 
 .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
-  padding-left: 15%;
+  padding-left: 5%;
   max-width: 100%;
 }
 
 .timeline-container .timeline-item .timeline-date {
   position: absolute;
-  top: 10%;
-  left: 52%;
+  top: 5%;
+  left: 50%;
   transform: translateX(-50%);
   width: 120px;
   height: 120px;
@@ -723,8 +728,9 @@ h3 {
 .timeline-container .timeline-item .timeline-date::after {
   content: '';
   position: absolute;
-  top: -25px;
-  right: -20px;
+  top: -15px;
+  right: -25px;
+  transform: rotate(5deg);
   width: 60px;
   height: 60px;
   background-image: var(--icon-flower);
@@ -756,16 +762,16 @@ h3 {
 }
 
 .timeline-container .timeline-content {
-  width: 38%;
-  padding: 0 20px;
+  width: 35%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   z-index: 2;
 }
 
 .timeline-container .timeline-item:nth-child(2n) .timeline-content {
-  padding: 40px 20px 40px 75px;
+  padding-left: 10%;
 }
 
 .timeline-container .timeline-content .timeline-image {
@@ -1161,7 +1167,7 @@ h3 {
   display: block;
   margin: 0 auto;
   width: 100%;
-  max-width: 200px;
+  max-width: 160px;
 }
 
 .rsvp-container .rsvp-form .form-group .submit-button:hover {
@@ -1620,41 +1626,25 @@ h3 {
     padding: 0;
   }
 
-  .timeline-container .timeline-info {
-    width: 60%;
-  }
-
-  .timeline-container .timeline-info h3 {
-    font-size: 2rem;
-    margin-left: -25%;
-  }
-
-  .timeline-container .timeline-info p {
-    font-size: 1rem;
-    padding-left: 5%;
-    max-width: 100%;
-  }
-
   .timeline-container .timeline-item:nth-child(2n) .timeline-content {
-    padding: 60px 20px 40px 45px;
+    padding-left: 7.5%;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-info {
-    padding-left: 0%;
-    padding-top: 20%;
+    padding-left: 5%;
+    padding-top: 7%;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
-    padding-left: 0%;
-    margin-left: 15%;
+    padding: 0;
+    margin-left: 20%;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
-    padding-left: 8%;
+    padding-left: 10%;
   }
 
   .timeline-container .timeline-item .timeline-date {
-    left: 50%;
     width: 70px;
     height: 70px;
   }
@@ -1677,13 +1667,29 @@ h3 {
   }
 
   .timeline-container .timeline-content .timeline-image-vertical {
-    width: 120px;
-    height: 180px;
+    width: 110px;
+    height: 160px;
   }
 
   .timeline-container .timeline-content .timeline-image-horizontal {
-    width: 180px;
-    height: 120px;
+    width: 160px;
+    height: 110px;
+  }
+
+  .timeline-container .timeline-info {
+    width: 75%;
+    padding-top: 6%;
+  }
+
+  .timeline-container .timeline-info h3 {
+    font-size: 1.8rem;
+    margin-left: -30%;
+  }
+
+  .timeline-container .timeline-info p {
+    font-size: 0.9rem;
+    padding-left: 2%;
+    max-width: 100%;
   }
 
   .countdown-page-content {
@@ -1728,6 +1734,7 @@ h3 {
 
   .rsvp-container .rsvp-title {
     font-size: 2rem;
+    padding: 0;
     line-height: 1.1;
   }
 
@@ -1765,12 +1772,12 @@ h3 {
     margin-bottom: 4%;
   }
 
-  .venue-details .venue-name-groom {
-    font-size: 1.8rem;
-  }
-
   .venue-details .venue-address-groom {
     font-size: 1.2rem;
+  }
+
+  .venue-details .map-container iframe {
+    height: 485px;
   }
 }
 
@@ -1787,9 +1794,18 @@ h3 {
     margin-left: -13%;
   }
 
+  .timeline-container .timeline-content .timeline-image-vertical {
+    width: 100px;
+    height: 150px;
+  }
+
+  .timeline-container .timeline-content .timeline-image-horizontal {
+    width: 150px;
+    height: 100px;
+  }
+
   .timeline-container .timeline-info h3 {
-    font-size: 1.9rem;
-    margin-left: -30%;
+    margin-left: -35%;
   }
 
   .timeline-container .timeline-item .timeline-date {
@@ -1811,14 +1827,20 @@ h3 {
     margin-top: -10px;
   }
 
-  .timeline-container .timeline-content .timeline-image-vertical {
-    width: 110px;
-    height: 170px;
+  .timeline-container .timeline-item:nth-child(2n) .timeline-content {
+    padding-left: 5%;
   }
 
-  .timeline-container .timeline-content .timeline-image-horizontal {
-    width: 170px;
-    height: 110px;
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info {
+    padding-top: 6%;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
+    margin-left: 25%;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
+    padding-left: 3%;
   }
 
   .countdown-page-content .animated-countdown .countdown-label {
@@ -1838,16 +1860,12 @@ h3 {
     font-size: 1.4rem;
   }
 
-  .venue-details .venue-name-groom {
-    font-size: 1.6rem;
-  }
-
   .venue-details .venue-address-groom {
     font-size: 1rem;
   }
 
   .venue-details .map-container iframe {
-    height: 490px;
+    height: 500px;
   }
 }
 
@@ -1860,32 +1878,38 @@ h3 {
     padding: 0 6%;
   }
 
-  .timeline-container .timeline-item {
-    margin: 4% 0;
+  .timeline-container .timeline-content .timeline-image-vertical {
+    width: 85px;
+    height: 130px;
+  }
+
+  .timeline-container .timeline-content .timeline-image-horizontal {
+    width: 130px;
+    height: 85px;
   }
 
   .timeline-container .timeline-info h3 {
-    font-size: 1.8rem;
-    margin-left: -30%;
+    font-size: 1.7rem;
+    margin-left: -35%;
   }
 
   .timeline-container .timeline-info p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
+    padding: 0;
+    margin-left: 28%;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
+    padding-left: 5%;
   }
 
   .timeline-container .timeline-item .timeline-date {
     left: 50%;
     width: 60px;
     height: 60px;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-content {
-    padding: 0;
-    margin: 20% 0 0 2%;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-info {
-    padding-top: 25%;
   }
 
   .timeline-container .timeline-item .timeline-date .date-day {
@@ -1897,18 +1921,8 @@ h3 {
   }
 
   .timeline-container .timeline-item .timeline-date .date-year {
-    font-size: 1.2rem;
-    margin-top: -12px;
-  }
-
-  .timeline-container .timeline-content .timeline-image-vertical {
-    width: 90px;
-    height: 145px;
-  }
-
-  .timeline-container .timeline-content .timeline-image-horizontal {
-    width: 145px;
-    height: 90px;
+    font-size: 1.1rem;
+    margin-top: -8px;
   }
 
   .countdown-page-content .countdown-note {
@@ -1922,6 +1936,15 @@ h3 {
   .slideshow-container .prev, .next {
     width: 30px;
     height: 30px;
+  }
+
+  .rsvp-container {
+    margin-top: -5%;
+    padding: 4px;
+  }
+
+  .rsvp-container .rsvp-form {
+    width: 95%;
   }
 
   .rsvp-container .rsvp-title {
@@ -1940,10 +1963,6 @@ h3 {
 
   .venue-details .venue-address {
     font-size: 1.2rem;
-  }
-
-  .venue-details .venue-name-groom {
-    font-size: 1.3rem;
   }
 
   .venue-details .venue-address-groom {
@@ -1980,8 +1999,26 @@ h3 {
     margin-left: 0%;
   }
 
-  .timeline-container .timeline-item {
-    margin: 4% 0;
+  .timeline-container .timeline-info h3 {
+    font-size: 1.5rem;
+    margin-left: -35%;
+    margin-bottom: 2px;
+  }
+
+  .timeline-container .timeline-info p {
+    font-size: 0.8rem;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
+    margin-left: 28%;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
+    padding-left: 2%;
+  }
+
+  .timeline-container .timeline-item:nth-child(2n) .timeline-content {
+    padding-left: 3%;
   }
 
   .timeline-container .timeline-item .timeline-date {
@@ -1990,35 +2027,10 @@ h3 {
     height: 50px;
   }
 
-  .timeline-container .timeline-info h3 {
-    font-size: 1.6rem;
-    margin-left: -30%;
-  }
-
-  .timeline-container .timeline-info p {
-    font-size: 0.9rem;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-info {
-    padding-top: 25%;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
-    margin-left: 10%;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
-    padding-left: 5%;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-content {
-    padding: 0;
-    margin-top: 30%;
-  }
-
   .timeline-container .timeline-item .timeline-date::after {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    right: -20px;
   }
 
   .timeline-container .timeline-item .timeline-date .date-day {
@@ -2055,6 +2067,19 @@ h3 {
   .slideshow-container .prev, .next {
     width: 28px;
     height: 28px;
+  }
+
+  .rsvp-container .rsvp-title {
+    font-size: 1.9rem;
+  }
+
+  .rsvp-container .rsvp-form {
+    width: 100%;
+  }
+
+  .rsvp-container .rsvp-form .form-group .radio-group .radio-container .radio-check-mark {
+    height: 18px;
+    width: 18px;
   }
 
   .gift-container .gift-title {
@@ -2186,10 +2211,6 @@ h3 {
     font-size: 1rem;
   }
 
-  .timeline-container .timeline-item {
-    margin: 4% 0;
-  }
-
   .timeline-container .timeline-item .timeline-date {
     left: 50%;
     width: 50px;
@@ -2198,33 +2219,30 @@ h3 {
 
   .timeline-container .timeline-info h3 {
     font-size: 1.4rem;
-    margin-left: -30%;
+    margin-left: -40%;
+    margin-bottom: 6px;
   }
 
   .timeline-container .timeline-info p {
-    font-size: 0.9rem;
-  }
-
-  .timeline-container .timeline-item:nth-child(2n) .timeline-info {
-    padding-top: 25%;
+    font-size: 0.7rem;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-info h3 {
-    margin-left: 10%;
+    margin-left: 30%;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-info p {
-    padding-left: 5%;
+    padding-left: 2%;
   }
 
   .timeline-container .timeline-item:nth-child(2n) .timeline-content {
-    padding: 0;
-    margin-top: 30%;
+    padding-left: 5%;
   }
 
   .timeline-container .timeline-item .timeline-date::after {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    right: -20px;
   }
 
   .timeline-container .timeline-item .timeline-date .date-day {
@@ -2242,11 +2260,11 @@ h3 {
 
   .timeline-container .timeline-content .timeline-image-vertical {
     width: 65px;
-    height: 105px;
+    height: 100px;
   }
 
   .timeline-container .timeline-content .timeline-image-horizontal {
-    width: 105px;
+    width: 100px;
     height: 65px;
   }
 
@@ -2261,6 +2279,27 @@ h3 {
   .slideshow-container .prev, .next {
     width: 25px;
     height: 25px;
+  }
+
+  .rsvp-container .rsvp-title {
+    font-size: 1.7rem;
+  }
+
+  .rsvp-container .rsvp-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .rsvp-container .rsvp-form {
+    width: 100%;
+  }
+
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 6px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .radio-group .radio-container .radio-check-mark {
+    height: 18px;
+    width: 18px;
   }
 
   .gift-container .gift-title {
@@ -2286,7 +2325,69 @@ h3 {
 }
 
 /* ---------- Height ---------- */
-@media (max-height: 932px) and (max-width: 576px) {
+@media (max-height: 932px) and (min-width: 577px) {
+  .page-content .circular-frame {
+    width: 180px;
+    height: 260px;
+  }
+
+  .invitation-text {
+    margin-top: -4%;
+  }
+
+  .invitation-text .family .bride-name, .groom-name {
+    font-size: 3rem;
+    padding-top: 20px;
+  }
+
+  .invitation-text .invitation-friend {
+    padding: 0;
+  }
+
+  .invitation-text .invitation-note {
+    margin-top: 0%;
+  }
+
+  .countdown-page-content {
+    min-height: 55vh;
+  }
+
+  .countdown-page-content .animated-countdown {
+    padding: 15% 0;
+  }
+
+  .rsvp-container .rsvp-title {
+    margin-top: -5%;
+
+  }
+
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 5px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 70px;
+    min-height: 70px;
+  }
+
+  .gift-container .gift-subtitle {
+    margin-bottom: 5%;
+  }
+
+  .gift-container .gift-description {
+    margin-bottom: 10%;
+  }
+
+  .venue-details .venue-name {
+    margin-top: -5%;
+  }
+
+  .venue-details .venue-address {
+    margin-top: -3%;
+  }
+}
+
+@media (max-height: 913px) and (max-width: 576px) {
   .page-content .circular-frame {
     margin-top: 10%;
   }
@@ -2360,6 +2461,21 @@ h3 {
     width: 80px;
     font-size: 3.5rem;
     line-height: 60px;
+  }
+}
+
+@media (min-height: 813px) and (max-height: 852px) and (min-width: 577px) {
+  .page-content .circular-frame {
+    width: 160px;
+    height: 230px;
+  }
+
+  .gift-container .gift-description {
+    margin-bottom: 5%;
+  }
+
+  .venue-details .map-container iframe {
+    height: 415px;
   }
 }
 
@@ -2456,13 +2572,24 @@ h3 {
     padding: 5px 30px;
   }
 
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 8px;
+  }
+
   .rsvp-container .rsvp-form .form-group .form-textarea {
-    height: 50px;
-    min-height: 50px;
+    height: 80px;
+    min-height: 80px;
   }
 
   .venue-details .map-container iframe {
-    height: 400px;
+    height: 420px;
+  }
+}
+
+@media (max-height: 780px) and (max-width: 576px) {
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 60px;
+    min-height: 60px;
   }
 }
 
@@ -2508,12 +2635,34 @@ h3 {
     margin: 16% 0px;
   }
 
+  .rsvp-container .rsvp-title {
+    font-size: 1.7rem;
+  }
+
+  .rsvp-container .rsvp-subtitle {
+    font-size: 0.9rem;
+  }
+
   .rsvp-container .rsvp-form {
     padding: 5px 30px;
   }
 
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 6px;
+  }
+
   .rsvp-container .rsvp-form .form-group .form-label {
     margin-bottom: 4px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .radio-group .radio-container .radio-check-mark {
+    height: 18px;
+    width: 18px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .form-input, .form-textarea {
+    padding: 1% 2%;
+    font-size: 0.8rem;
   }
 
   .rsvp-container .rsvp-form .form-group .form-textarea {
@@ -2526,7 +2675,7 @@ h3 {
   }
 
   .venue-details .map-container iframe {
-    height: 350px;
+    height: 368px;
   }
 }
 
@@ -2559,8 +2708,16 @@ h3 {
     line-height: 28px;
   }
 
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 4px;
+  }
+
   .gift-container .gift-description {
     margin-bottom: 2%;
+  }
+
+  .venue-details .map-container iframe {
+    height: 322px;
   }
 }
 
@@ -2603,7 +2760,7 @@ h3 {
   }
 
   .venue-details .map-container iframe {
-    height: 455px;
+    height: 465px;
   }
 }
 
@@ -2638,7 +2795,7 @@ h3 {
   }
 
   .venue-details .map-container iframe {
-    height: 425px;
+    height: 435px;
   }
 }
 
@@ -2689,7 +2846,7 @@ h3 {
   }
 
   .venue-details .map-container iframe {
-    height: 375px;
+    height: 380px;
   }
 }
 
@@ -2721,6 +2878,11 @@ h3 {
     margin: 36% 0px;
   }
 
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 100px;
+    min-height: 100px;
+  }
+
   .venue-details .map-container iframe {
     height: 475px;
   }
@@ -2743,6 +2905,26 @@ h3 {
     margin-top: 6%;
   }
 
+  .rsvp-container .rsvp-form .form-group .radio-group .radio-container .radio-check-mark {
+    height: 20px;
+    width: 20px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .form-input, .form-textarea {
+    padding: 2% 4%;
+    font-size: 0.9rem;
+  }
+
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 80px;
+    min-height: 80px;
+  }
+
+  .rsvp-container .rsvp-form .form-group .submit-button {
+    padding: 10px 30px;
+    max-width: 140px;
+  }
+
   .venue-details .map-container iframe {
     height: 440px;
   }
@@ -2754,8 +2936,24 @@ h3 {
     margin: 28% 0px;
   }
 
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 72px;
+    min-height: 72px;
+  }
+
   .venue-details .map-container iframe {
-    height: 400px;
+    height: 390px;
+  }
+}
+
+@media (max-width: 480px) and (max-height: 680px) {
+
+  .slideshow-container {
+    margin: 28% 0px;
+  }
+
+  .venue-details .map-container iframe {
+    height: 370px;
   }
 }
 
@@ -2782,11 +2980,7 @@ h3 {
   }
 
   .venue-details .map-container iframe {
-    height: 520px;
-  }
-
-  .venue-details .map-container-groom iframe {
-    height: 460px;
+    height: 495px;
   }
 }
 
@@ -2814,6 +3008,14 @@ h3 {
   .slideshow-container {
     margin: 42% 0px;
   }
+
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 7px;
+  }
+
+  .venue-details .map-container iframe {
+    height: 465px;
+  }
 }
 
 @media (max-width: 428px) and (max-height: 776px) {
@@ -2835,6 +3037,14 @@ h3 {
 
   .invitation-text .invitation-note {
     margin-top: 6%;
+  }
+
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 6px;
+  }
+
+  .venue-details .map-container iframe {
+    height: 425px;
   }
 }
 
@@ -2875,6 +3085,10 @@ h3 {
   .slideshow-container {
     margin: 36% 0px;
   }
+
+  .venue-details .map-container iframe {
+    height: 405px;
+  }
 }
 
 @media (max-width: 428px) and (max-height: 710px) {
@@ -2906,6 +3120,15 @@ h3 {
   .rsvp-container .rsvp-form .form-group .form-label {
     margin-bottom: 2px;
   }
+
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 65px;
+    min-height: 65px;
+  }
+
+  .venue-details .map-container iframe {
+    height: 375px;
+  }
 }
 
 @media (max-width: 428px) and (max-height: 680px) {
@@ -2926,8 +3149,21 @@ h3 {
     margin: 32% 0px;
   }
 
+  .rsvp-container .rsvp-form .form-group {
+    margin-bottom: 5px;
+  }
+
   .rsvp-container .rsvp-form .form-group .form-label {
     margin-bottom: 0;
+  }
+
+  .rsvp-container .rsvp-form .form-group .form-textarea {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .venue-details .map-container iframe {
+    height: 350px;
   }
 }
 
