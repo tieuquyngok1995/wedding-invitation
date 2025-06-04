@@ -4,7 +4,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   const pageLoad = function () {
-
     const coverCoupleImage =
       "https://placehold.co/400x400/f7f1e6/d4bc95?text=QT+%26+NN";
     const timelineImage1 =
@@ -337,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const musicPlayer = (function () {
     const musicToggle = document.getElementById("music-toggle");
     const backgroundMusic = document.getElementById("background-music");
-    let isMusicPlaying = true;
+    let isMusicPlaying = false;
 
     function init() {
       musicToggle.addEventListener("click", function () {
