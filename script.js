@@ -365,7 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ========================================================================
   const rsvpManager = (function () {
     const form = document.getElementById("rsvp-form");
-    const status = document.getElementById("form-status");
 
     async function submitForm(event) {
       event.preventDefault();
@@ -409,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((result) => {
           if (result.result === "success") {
             // Show thank you message
-            const formContainer = rsvpForm.parentElement;
+            const formContainer = form.parentElement;
             formContainer.innerHTML = `
                 <div class="thank-you-message">
                     <i class="fas fa-check-circle success-icon"></i>
@@ -424,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
 
             // Reset form
-            rsvpForm.reset();
+            form.reset();
           } else {
             console.error("Gửi thất bại: " + result.error);
           }
