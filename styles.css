@@ -1816,6 +1816,11 @@ h3 {
     height: 160px;
   }
 
+  .rsvp-container .thank-you-message {
+    padding: 5%;
+    width: 95%;
+  }
+
   .venue-details .venue-name {
     font-size: 2.2rem;
   }
@@ -2143,6 +2148,10 @@ h3 {
   .rsvp-container .rsvp-form .form-group .radio-group .radio-container .radio-check-mark {
     height: 18px;
     width: 18px;
+  }
+
+  .rsvp-container .thank-you-message h3 {
+    padding: 0;
   }
 
   .gift-container .gift-title {

@@ -413,6 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Vui lòng nhập số khách hợp lệ.");
         return;
       }
+
       const queryParams = new URLSearchParams(data).toString();
       fetch(
         "https://script.google.com/macros/s/AKfycbzuJy4zw8Mighk6mUZwdPuJcfcIKNaIvu3EHXlAQIqonj1QNroUVWAglli5S7o-DHkFyg/exec" +
@@ -428,11 +429,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="thank-you-message">
                     <i class="fas fa-check-circle success-icon"></i>
                     <h3>Cảm ơn bạn đã xác nhận!</h3>
-                    <p>Chúng mình đã nhận được thông tin của bạn và rất mong được gặp bạn trong ngày trọng đại.</p>
+                    <p>Chúng mình đã nhận được thông tin từ bạn và xin chân thành cảm ơn vì đã dành thời gian phản hồi.</p>
                     ${
                       formData.attendance === "yes"
-                        ? "<p>Hẹn gặp bạn vào ngày cưới!</p>"
-                        : "<p>Rất tiếc khi bạn không thể tham dự. Cảm ơn bạn đã thông báo cho chúng mình.</p>"
+                        ? "<p>Chúng mình rất vui và vinh hạnh khi được đón tiếp bạn trong ngày trọng đại.<br>Hẹn gặp bạn tại lễ cưới nhé!</p>"
+                        : "<p>Rất tiếc khi biết rằng bạn không thể tham dự.<br>Dù vậy, chúng mình vẫn rất cảm kích vì bạn đã thông báo sớm.</p>"
                     }
                 </div>
             `;
