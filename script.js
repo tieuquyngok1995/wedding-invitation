@@ -365,9 +365,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // ========================================================================
   const rsvpManager = (function () {
     const form = document.getElementById("rsvp-form");
+    const loadingOverlay = document.getElementById("loading-overlay");
+
+    function showLoader() {
+      loadingOverlay.classList.add("active");
+    }
+
+    function hideLoader() {
+      loadingOverlay.classList.remove("active");
+    }
 
     async function submitForm(event) {
       event.preventDefault();
+
+      showLoader();
 
       const formData = new FormData(form);
       const data = {
@@ -380,21 +391,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Validate form
       if (!data.attendance) {
+        hideLoader();
         alert("Vui lòng chọn bạn có tham dự không.");
         return;
       }
 
       if (!data.guestName) {
+        hideLoader();
         alert("Vui lòng nhập tên của bạn.");
         return;
       }
 
       if (!data.guestOf) {
+        hideLoader();
         alert("Vui lòng chọn bạn là khách của ai.");
         return;
       }
 
       if (!data.guestCount || data.guestCount < 1) {
+        hideLoader();
         alert("Vui lòng nhập số khách hợp lệ.");
         return;
       }
@@ -424,12 +439,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Reset form
             form.reset();
+            hideLoader();
           } else {
             console.error("Gửi thất bại: " + result.error);
           }
         })
         .catch((error) => {
           console.error("Lỗi gửi form: " + error.message);
+          hideLoader();
         });
     }
 
