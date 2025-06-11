@@ -4,37 +4,22 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   const pageLoad = function () {
-    const coverCoupleImage =
-      "https://placehold.co/400x400/f7f1e6/d4bc95?text=QT+%26+NN";
-    const timelineImage1 =
-      "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-1";
-    const timelineImage2 =
-      "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-2";
-    const timelineImage3 =
-      "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-3";
-    const timelineImage4 =
-      "https://placehold.co/400x400/f7f1e6/d4bc95?text=timeline-4";
-    const slideshowImage1 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-1";
-    const slideshowImage2 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-2";
-    const slideshowImage3 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-3";
-    const slideshowImage4 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-4";
-    const slideshowImage5 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-5";
-    const slideshowImage6 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-6";
-    const slideshowImage7 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-7";
-    const slideshowImage8 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-8";
-    const slideshowImage9 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-9";
-    const slideshowImage10 =
-      "https://placehold.co/1200x800/f7f1e6/d4bc95?text=slideshow-10";
-    const qrImage = "https://placehold.co/400x400/f7f1e6/d4bc95?text=QR+Code";
+    const coverCoupleImage = "./assets/image/coverCoupleImage.jpg";
+    const timelineImage1 = "./assets/image/timelineImage1.jpg";
+    const timelineImage2 = "./assets/image/timelineImage2.jpg";
+    const timelineImage3 = "./assets/image/timelineImage3.jpg";
+    const timelineImage4 = "./assets/image/timelineImage4.jpg";
+    const slideshowImage1 = "./assets/image/slideshowImage1.jpg";
+    const slideshowImage2 = "./assets/image/slideshowImage2.jpg";
+    const slideshowImage3 = "./assets/image/slideshowImage3.jpg";
+    const slideshowImage4 = "./assets/image/slideshowImage4.jpg";
+    const slideshowImage5 = "./assets/image/slideshowImage5.jpg";
+    const slideshowImage6 = "./assets/image/slideshowImage6.jpg";
+    const slideshowImage7 = "./assets/image/slideshowImage7.jpg";
+    const slideshowImage8 = "./assets/image/slideshowImage8.jpg";
+    const slideshowImage9 = "./assets/image/slideshowImage9.jpg";
+    const slideshowImage10 = "./assets/image/slideshowImage10.jpg";
+    const qrImage = "./assets/image/qrImage.jpg";
 
     document.getElementById("cover-couple-image").src = coverCoupleImage;
     document.getElementById("timeline-image-1").src = timelineImage1;
