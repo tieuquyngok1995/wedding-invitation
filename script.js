@@ -68,6 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
       pages[index].classList.add("active");
       dots[index].classList.add("active");
 
+      if (pages[index].id === "gallery") {
+        if (
+          typeof gallerySlideshow !== "undefined" &&
+          typeof gallerySlideshow.initSlideshow === "function"
+        ) {
+          gallerySlideshow.initSlideshow();
+        }
+      }
+
       currentPageIndex = index;
     }
 
@@ -145,10 +154,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Touch events for swipe navigation
       document.addEventListener("touchstart", (e) => {
+        const galleryPage = document.getElementById("gallery");
+        const isInGallery =
+          galleryPage && galleryPage.classList.contains("active");
+
+        if (isInGallery) {
+          const activeSlide = document.querySelector(".slide.active");
+          const activeSlidePos = activeSlide.getBoundingClientRect();
+
+          const extraHeight = activeSlidePos.height * 0.1;
+          const extendedTop = activeSlidePos.top - extraHeight;
+          const extendedBottom = activeSlidePos.bottom + extraHeight;
+          const touchY = e.touches[0].clientY;
+
+          if (touchY >= extendedTop && touchY <= extendedBottom) {
+            e.target.dataset.ignoreNavSwipe = "true";
+            return;
+          }
+        }
         touchStartX = e.changedTouches[0].screenX;
       });
 
       document.addEventListener("touchend", (e) => {
+        if (e.target.dataset.ignoreNavSwipe === "true") {
+          delete e.target.dataset.ignoreNavSwipe;
+          return;
+        }
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
       });
@@ -179,14 +210,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const verticalThreshold = screenHeight * (2 / 3);
 
         // Click on right edge - go to next page
-        if (e.clientX > screenWidth - screenNavigationWidth) {
-          setActivePage(currentPageIndex + 1);
-        }
-        // Click on left edge - go to previous page
-        else if (e.clientX < screenNavigationWidth) {
-          setActivePage(currentPageIndex - 1);
+        if (e.clientY > verticalThreshold) {
+          // Click on right edge - go to next page
+          if (e.clientX > screenWidth - screenNavigationWidth) {
+            setActivePage(currentPageIndex + 1);
+          }
+          // Click on left edge - go to previous page
+          else if (e.clientX < screenNavigationWidth) {
+            setActivePage(currentPageIndex - 1);
+          }
         }
       });
     }
@@ -508,12 +544,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let direction = "right";
     let autoplayTimer = null;
     const AUTOPLAY_DELAY = 5000;
+    let isInitialized = false;
 
     let progressBar = null;
     let progressBarAnimation = null;
 
     // Initialize slideshow
     function initSlideshow() {
+      if (isInitialized) return;
+
       showSlide(currentSlide);
       setupControls();
       startAutoplay();
@@ -653,11 +692,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Public API
     return {
       init: function () {
-        // Initialize if gallery is already active
-        if (document.querySelector("#gallery.active")) {
-          initSlideshow();
-        }
-
         // Watch for page changes using MutationObserver
         const observer = new MutationObserver(function (mutations) {
           mutations.forEach(function (mutation) {
@@ -668,7 +702,6 @@ document.addEventListener("DOMContentLoaded", function () {
               const gallery = document.querySelector("#gallery");
 
               if (gallery && gallery.classList.contains("active")) {
-                initSlideshow();
                 startAutoplay();
               } else if (gallery && !gallery.classList.contains("active")) {
                 stopAutoplay();
@@ -695,6 +728,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       },
       navigateSlide: navigateSlide,
+      initSlideshow: initSlideshow,
     };
   })();
 
